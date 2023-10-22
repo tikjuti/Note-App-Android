@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <ImageButton
+            android:id="@+id/addUndoButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_weight="0.5"
+            android:background="@color/background"
+            android:src="@drawable/icons8_undo_40px"
+            android:layout_marginLeft="5dp"
+            android:paddingTop="5dp"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent">
+
+        </TextView>
+        <ImageButton
+            android:id="@+id/addConfirmButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/save"
+            android:layout_weight="0.5"
+            android:layout_gravity="end"
+            android:background="@color/background"
+            android:layout_marginRight="5dp"
+            android:paddingTop="5dp"
+            />
+    </LinearLayout>
+    <EditText
+        android:hint="Nhập tiêu đề"
+        android:textSize="20sp"
+        android:id="@+id/addNoteTitle"
+        android:layout_width="match_parent"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hint"
+        android:layout_height="wrap_content"
+        >
+
+    </EditText>
+    <EditText
+        android:hint="Nhập nội dung"
+        android:textSize="16sp"
+        android:id="@+id/addNoteContent"
+        android:layout_width="match_parent"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hint"
+        android:layout_height="wrap_content">
+
+    </EditText>
+
+</LinearLayout>
