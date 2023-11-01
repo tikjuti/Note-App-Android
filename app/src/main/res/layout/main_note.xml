@@ -85,7 +85,10 @@
         android:id="@+id/listViewNote"
         android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10sp"
+        >
     </ListView>
 
 
