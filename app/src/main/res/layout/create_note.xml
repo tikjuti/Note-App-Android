@@ -2,8 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:orientation="vertical"
-    android:background="@color/background">
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="10dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,50 +18,54 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_weight="0.5"
-            android:background="@color/background"
-            android:src="@drawable/icons8_undo_40px"
             android:layout_marginLeft="5dp"
-            android:paddingTop="5dp"
-            />
+            android:layout_weight="0.75"
+            android:background="@color/background"
+            android:src="@drawable/icons8_go_back_48" />
         <TextView
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="4"
-            android:layout_height="match_parent">
-
-        </TextView>
-        <ImageButton
-            android:id="@+id/addConfirmButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/save"
-            android:layout_weight="0.5"
-            android:layout_gravity="end"
-            android:background="@color/background"
-            android:layout_marginRight="5dp"
-            android:paddingTop="5dp"
-            />
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="Thêm mới task"
+            android:textColor="@color/black"
+            android:textSize="24dp" />
     </LinearLayout>
-    <EditText
-        android:hint="Nhập tiêu đề"
-        android:textSize="20sp"
-        android:id="@+id/addNoteTitle"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:textColor="@color/black"
-        android:textColorHint="@color/hint"
         android:layout_height="wrap_content"
-        >
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
-    </EditText>
-    <EditText
-        android:hint="Nhập nội dung"
-        android:textSize="16sp"
-        android:id="@+id/addNoteContent"
-        android:layout_width="match_parent"
-        android:textColor="@color/black"
-        android:textColorHint="@color/hint"
-        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/addNoteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:hint="Nhập tiêu đề"
+            android:textColor="@color/black"
+            android:textColorHint="#838383"
+            android:textSize="16sp"></EditText>
 
-    </EditText>
+        <EditText
+            android:id="@+id/addNoteContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập nội dung"
+            android:textColor="@color/black"
+            android:textColorHint="#838383"
+            android:textSize="16sp"></EditText>
+
+        <Button
+            android:id="@+id/addConfirmButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#427D9D"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/white"
+            android:text="Thêm mới"></Button>
+    </LinearLayout>
 
 </LinearLayout>

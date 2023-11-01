@@ -16,23 +16,25 @@ public class Database extends SQLiteOpenHelper {
     public static final String COLUMN_ID = "Id";
     public static final String COLUMN_TITLE = "Title";
     public static final String COLUMN_CONTENT = "Content";
-
     private static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_NOTES + " (" +
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_TITLE + " VARCHAR(255), " +
                     COLUMN_CONTENT + " TEXT " +
                     ");";
-
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(TABLE_CREATE);
+    }
     public Database(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL(TABLE_CREATE);
-    }
+//    @Override
+//    public void onCreate(SQLiteDatabase db) {
+//        db.execSQL(TABLE_CREATE);
+//    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -49,5 +51,4 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase database = getReadableDatabase();
         return database.rawQuery(sql, null);
     }
-
 }

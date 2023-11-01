@@ -4,7 +4,10 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="10dp"
+    >
 
 <!--    <SearchView-->
 <!--        android:id="@+id/searchView"-->
@@ -73,7 +76,7 @@
         android:id="@+id/addNoteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/addicon"
+        android:src="@drawable/icons8_add_48"
         android:layout_gravity="center|end"
         android:background="@color/background"
         android:layout_margin="10dp"

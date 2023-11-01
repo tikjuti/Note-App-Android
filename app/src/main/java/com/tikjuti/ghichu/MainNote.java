@@ -103,8 +103,8 @@ public class MainNote extends AppCompatActivity {
         dialog.show();
     }
 
-    public void updateNote(int id, String title, String content){
-        Intent iGetContactInfo= new Intent(getApplicationContext(), UpdateNote.class);
+    public void updateNote(int id, String title, String content) {
+        Intent iGetContactInfo = new Intent(getApplicationContext(), UpdateNote.class);
         Bundle bundle = new Bundle();
         bundle.putInt("id", id);
         bundle.putString("title", title);

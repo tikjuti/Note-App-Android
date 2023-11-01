@@ -1,13 +1,11 @@
 package com.tikjuti.ghichu;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -17,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class CreateNote extends AppCompatActivity {
 
     ImageButton btnUndo;
-    ImageButton btnConfirm;
+    Button btnConfirm;
     EditText txtTitle, txtContent;
     Database database;
 
@@ -38,12 +36,15 @@ public class CreateNote extends AppCompatActivity {
             public void onClick(View view) {
                 String title = txtTitle.getText().toString();
                 String content = txtContent.getText().toString();
-//                String sql = "INSERT INTO Notes VALUES (null, '" + title + "', '" + content + "')";
-//                database.QueryData(sql);
+
+                if (title.equals("") || content.equals("")) {
+                    Toast.makeText(CreateNote.this, "Vui lòng nhập đầy đủ các mục", Toast.LENGTH_SHORT).show();
+                    return; // Add this line to prevent data insertion when title or content is empty
+                }
 
                 ContentValues values = new ContentValues();
                 values.put("Title", title);
-                values.put("Content", title);
+                values.put("Content", content); // Corrected from "title" to "content"
 
                 SQLiteDatabase db = database.getWritableDatabase();
                 long newRowId = db.insert("Notes", null, values);
