@@ -71,6 +71,7 @@ public class NoteAdapter extends BaseAdapter {
             }
         });
 
+//        Bắt sự kiện cập nhật
         viewHolder.txtTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

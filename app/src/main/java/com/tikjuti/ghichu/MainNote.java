@@ -16,18 +16,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainNote extends AppCompatActivity {
-
-    NoteDataSource dataSource;
     ListView listNote;
     static ArrayList<Note> arrayNote;
     static NoteAdapter adapter;
     ImageButton btnAddNote;
+    SearchView searchView;
     static Database database;
+    private List<Note> notes;
 
 
     @Override
@@ -35,11 +37,13 @@ public class MainNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_note);
 
-        database = new Database(this, "sqlite.db", null, 1);
-////      Tạo bảng công việc
-        database.QueryData("CREATE TABLE IF NOT EXISTS Notes(Id INTEGER PRIMARY KEY AUTOINCREMENT, Title VARCHAR(255), Content TEXT)");
+//        Khởi tạo database.
+        database = new Database(this);
+////      Tạo bảng ghi chú cách 1
+//        database.QueryData("CREATE TABLE IF NOT EXISTS Notes(Id INTEGER PRIMARY KEY AUTOINCREMENT, Title VARCHAR(255), Content TEXT)");
 
         btnAddNote = (ImageButton) findViewById(R.id.addNoteButton);
+        searchView = findViewById(R.id.searchView);
         btnAddNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,27 +51,66 @@ public class MainNote extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    if (s.equals("")) {
+                        getTitleData();
+                        return true;
+                    }
+                    else {
+                        performSearch(s);
+                    }
+                    return true;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    if (s.equals("")) {
+                        getTitleData();
+                        return true;
+                    }
+                    else {
+                        performSearch(s);
+                    }
+                    return true;
+                }
+            });
+
+
 
         listNote = (ListView) findViewById(R.id.listViewNote);
         arrayNote = new ArrayList<>();
 
         adapter = new NoteAdapter(this, R.layout.line_note, arrayNote);
         listNote.setAdapter(adapter);
-////
-////      Khởi tạo database
-//        dataSource = new NoteDataSource(this);
-//        dataSource.open();
-
-//////      insert data
-//        dataSource.createNote("Ghi chú 1", "Học bài đi");
-////
-//        arrayNote = (ArrayList<Note>) dataSource.getAllNotes();
-
-//        String sql = "INSERT INTO Notes VALUES (null, 'Ghi chú', 'Content')";
-//        database.QueryData(sql);
         getTitleData();
     }
 
+    private void performSearch(String query) {
+        List<Note> searchResults = searchNotesByTitle(query);
+        arrayNote.clear();
+        arrayNote.addAll(searchResults);
+        adapter.notifyDataSetChanged();
+    }
+    private List<Note> searchNotesByTitle(String title) {
+        Cursor dataTitle = database.GetData("SELECT * FROM Notes WHERE Title LIKE '%" + title + "%'");
+        List<Note> results = new ArrayList<>();
+//        Cách 1
+//        for (Note note : arrayNote) {
+//            if (note.getTitle().toLowerCase().contains(title.toLowerCase())) {
+//                results.add(note);
+//            }
+//        }
+        results.clear();
+        while (dataTitle.moveToNext()) {
+            String titleNote = dataTitle.getString(1);
+            String contentNote = dataTitle.getString(2);
+            int id = dataTitle.getInt(0);
+            results.add(new Note(id, titleNote, contentNote));
+        }
+        return results;
+    }
     public static void getTitleData() {
         Cursor dataTitle = database.GetData("SELECT * FROM Notes");
         arrayNote.clear();

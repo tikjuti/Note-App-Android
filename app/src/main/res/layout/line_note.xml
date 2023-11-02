@@ -28,14 +28,4 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent">
     </ImageButton>
-
-<!--    <ImageButton-->
-<!--        android:id="@+id/btnEditButton"-->
-<!--        android:layout_weight="1.5"-->
-<!--        android:src="@drawable/editicon"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:background="@color/white">-->
-<!--    </ImageButton>-->
-
 </LinearLayout>

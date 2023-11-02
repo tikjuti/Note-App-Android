@@ -8,79 +8,31 @@
     android:paddingHorizontal="10dp"
     android:paddingVertical="10dp"
     >
-
-<!--    <SearchView-->
-<!--        android:id="@+id/searchView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:iconifiedByDefault="false"-->
-<!--        android:queryHint="Tìm kiếm ghi chú"-->
-<!--        android:background="@color/black"-->
-<!--        />-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:padding="16dp"-->
-<!--        android:gravity="center">-->
-
-<!--        <HorizontalScrollView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:scrollbars="none">-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal">-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/button1"-->
-<!--                    android:layout_margin="3dp"-->
-<!--                    android:padding="5dp"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:textColor="#222220"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    android:background="@drawable/border_button"-->
-<!--                    android:text="Tất cả" />-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/button2"-->
-<!--                    android:layout_margin="3dp"-->
-<!--                    android:padding="5dp"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:textColor="#222220"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    android:background="@drawable/border_button"-->
-<!--                    android:text="Chưa phân loại edrtyuiuytrew" />-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/button3"-->
-<!--                    android:layout_margin="3dp"-->
-<!--                    android:padding="5dp"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:textColor="#222220"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    android:background="@drawable/border_button"-->
-<!--                    android:text="Khóa học" />-->
-
-<!--            </LinearLayout>-->
-<!--        </HorizontalScrollView>-->
-<!--    </LinearLayout>-->
-
-    <ImageButton
-        android:id="@+id/addNoteButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/icons8_add_48"
-        android:layout_gravity="center|end"
-        android:background="@color/background"
-        android:layout_margin="10dp"
-        />
+        android:weightSum="4">
+            <SearchView
+                android:layout_weight="3.5"
+                android:id="@+id/searchView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:queryHint="Tìm kiếm ghi chú"
+                android:iconifiedByDefault="false"
+                />
+            <ImageButton
+                android:layout_weight="0.5"
+                android:id="@+id/addNoteButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icons8_add_48"
+                android:layout_gravity="center|end"
+                android:background="@color/background"
+                android:layout_margin="10dp"
+                />
+    </LinearLayout>
+
     <ListView
         android:id="@+id/listViewNote"
         android:padding="10dp"
