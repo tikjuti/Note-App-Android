@@ -20,13 +20,14 @@
                 android:layout_height="wrap_content"
                 android:queryHint="Tìm kiếm ghi chú"
                 android:iconifiedByDefault="false"
+                android:layout_gravity="center"
                 />
             <ImageButton
                 android:layout_weight="0.5"
                 android:id="@+id/addNoteButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icons8_add_48"
+                android:src="@drawable/add"
                 android:layout_gravity="center|end"
                 android:background="@color/background"
                 android:layout_margin="10dp"
