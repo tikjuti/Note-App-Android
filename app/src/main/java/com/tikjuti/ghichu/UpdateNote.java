@@ -29,7 +29,6 @@ public class UpdateNote extends AppCompatActivity {
         btnConfirm = findViewById(R.id.editConfirmButton);
         txtTitle = findViewById(R.id.editNoteTitle);
         txtContent = findViewById(R.id.editNoteContent);
-//
         Bundle bundle = getIntent().getExtras();
 
         int id = bundle.getInt("id");
@@ -38,7 +37,6 @@ public class UpdateNote extends AppCompatActivity {
 
         txtTitle.setText(title);
         txtContent.setText(content);
-//
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,8 +46,6 @@ public class UpdateNote extends AppCompatActivity {
                     Toast.makeText(UpdateNote.this, "Vui lòng nhập đầy đủ các mục", Toast.LENGTH_SHORT).show();
                     return; // Add this line to prevent data insertion when title or content is empty
                 }
-//                String sql = "UPDATE Notes SET Title = '"+newTitle+"', Content = '"+newContent+"' WHERE Id = '"+id+"'";
-//                database.QueryData(sql);
                 ContentValues values = new ContentValues();
                 values.put("Title", newTitle);
                 values.put("Content", newContent);

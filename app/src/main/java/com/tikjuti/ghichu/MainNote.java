@@ -39,8 +39,6 @@ public class MainNote extends AppCompatActivity {
 
 //        Khởi tạo database.
         database = new Database(this);
-////      Tạo bảng ghi chú cách 1
-//        database.QueryData("CREATE TABLE IF NOT EXISTS Notes(Id INTEGER PRIMARY KEY AUTOINCREMENT, Title VARCHAR(255), Content TEXT)");
 
         btnAddNote = (ImageButton) findViewById(R.id.addNoteButton);
         searchView = findViewById(R.id.searchView);
@@ -96,12 +94,6 @@ public class MainNote extends AppCompatActivity {
     private List<Note> searchNotesByTitle(String title) {
         Cursor dataTitle = database.GetData("SELECT * FROM Notes WHERE Title LIKE '%" + title + "%'");
         List<Note> results = new ArrayList<>();
-//        Cách 1
-//        for (Note note : arrayNote) {
-//            if (note.getTitle().toLowerCase().contains(title.toLowerCase())) {
-//                results.add(note);
-//            }
-//        }
         results.clear();
         while (dataTitle.moveToNext()) {
             String titleNote = dataTitle.getString(1);
@@ -129,8 +121,6 @@ public class MainNote extends AppCompatActivity {
         dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-//                database.QueryData("DELETE FROM Notes WHERE Id = '"+id+"'");
-
                 SQLiteDatabase db = database.getWritableDatabase();
                 db.delete("Notes", "Id = ?", new String[]{String.valueOf(id)});
                 Toast.makeText(MainNote.this, "Đã xóa", Toast.LENGTH_SHORT).show();
