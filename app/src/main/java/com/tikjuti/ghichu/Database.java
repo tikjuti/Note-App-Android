@@ -1,7 +1,6 @@
 package com.tikjuti.ghichu;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -33,10 +32,5 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTES);
         onCreate(db);
-    }
-
-    public Cursor GetData(String sql) {
-        SQLiteDatabase database = getReadableDatabase();
-        return database.rawQuery(sql, null);
     }
 }

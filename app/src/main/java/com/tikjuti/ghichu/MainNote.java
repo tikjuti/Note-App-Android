@@ -92,7 +92,8 @@ public class MainNote extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
     private List<Note> searchNotesByTitle(String title) {
-        Cursor dataTitle = database.GetData("SELECT * FROM Notes WHERE Title LIKE '%" + title + "%'");
+        SQLiteDatabase db = database.getReadableDatabase();
+        Cursor dataTitle = db.query("Notes",null,"Title like ?",new String[]{"%"+title+"%"},null,null,null);
         List<Note> results = new ArrayList<>();
         results.clear();
         while (dataTitle.moveToNext()) {
@@ -104,7 +105,8 @@ public class MainNote extends AppCompatActivity {
         return results;
     }
     public static void getTitleData() {
-        Cursor dataTitle = database.GetData("SELECT * FROM Notes");
+        SQLiteDatabase db = database.getReadableDatabase();
+        Cursor dataTitle = db.query("Notes", null, null, null,null,null, null);
         arrayNote.clear();
         while (dataTitle.moveToNext()) {
             String title = dataTitle.getString(1);
